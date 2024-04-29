@@ -1,0 +1,37 @@
+{% macro display_name(name, second_name="") %}
+<h1>Hello, {{ name }} {{ second_name }}</h1>
+{% endmacro %}
+
+{% macro student_card(student) %}
+<div class="card container mb-3">
+    <h5 class="card-header">ID: {{ student.id }}</h5>
+    <div class="card-body">
+        <h5 class="card-title">NAME: {{ student.name|upper }}</h5>
+        <p class="card-text">SCORE: {{ student.score }}</p>
+        <p class="card-text">{{ student.description|truncate(100, True) }}</p>
+        <a href="{{ url_for('student', id=student.id) }}" class="btn btn-primary">Details</a>
+    </div>
+</div>
+{% endmacro %}
+
+{% macro textbar() %}
+<div class="container">
+    <form>
+        <p>
+            <label>Name: </label>
+            <input type="text" value="" placeholder="input your name" required>
+        </p>
+        <p>
+            <label>Email: </label>
+            <input type="email" value="" required>
+        </p>
+        <p>
+            <label>Content: </label>
+            <textarea name="message" rows="5" cols="25" required></textarea>
+        </p>
+        <p>
+            <input type="submit" value="Send">
+        </p>
+    </form>
+</div>
+{% endmacro %}

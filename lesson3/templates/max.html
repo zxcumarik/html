@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="container mb-5">This is detailed page about student</h1>
+{% set student = students|max(attribute='score') %}
+<div class="card container mb-3">
+    <h5 class="card-header">ID: {{ student.id }}</h5>
+    <div class="card-body">
+        <h5 class="card-title">NAME: {{ student.name }}</h5>
+        <p class="card-text">SCORE: {{ student.score }}</p>
+    </div>
+</div>
+
+<h1 class="container mb-5">SUM LENGTH ETC.</h1>
+<h3 class="container mb-5">SUM: {{ students|sum(attribute='score') }}</h3>
+<h3 class="container mb-5">LENGTH: {{ students|length }}</h3>
+<h3 class="container mb-5">mid-score: {{ students|sum(attribute='score')/students|length }}</h3>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% import 'macros.html' as macros %}
+
+{% for student in students|sort(attribute='score', reverse=True) %}
+{{ macros.student_card(student) }}
+{% endfor %}
+
+{% endblock %}
