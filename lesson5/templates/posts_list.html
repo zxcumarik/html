@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="container mb-5">All posts</h1>
+
+{% for post in posts %}
+<div class="card container mb-3">
+    <h5 class="card-header">ID: {{ post.id }}</h5>
+    <div class="card-body">
+        <h5 class="card-title">{{ post.title }}</h5>
+        <p class="card-text">{{ post.content }}</p>
+        <p class="card-text">{{ post.author }}</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
