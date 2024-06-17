@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>WELCOME TO TOURS</h1>
+{% for tour in tours %}
+<p>{{ tour }} | {{ tour.time.strftime("%d.%m.%Y %H:%M") }}</p>
+
+{% endfor %}
+{% endblock %}
