@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5 w-75">
+    <h2>All categories</h2>
+    <li>
+        <a class="text-decoration-none" href="{{ url_for('new_category') }}">Create a category</a>
+    </li>
+    <div class="card w-75 mt-3">
+        {% for category in categories %}
+        <li class="list-group-item bg-dark mb-1">
+            <a class="text-light" href="{{ url_for('category_posts', category_id=category.id) }}">
+                {{ category }}
+            </a>
+        </li>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
