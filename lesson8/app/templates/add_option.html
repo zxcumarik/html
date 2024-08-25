@@ -1,10 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ poll }}</h1>
+<form action="/add-option/{{ poll.id }}" method="post">
+    <div>
+        <label>Option title</label>
+        <div>
+            <input name="title">
+        </div>
+        <button type="submit">Add</button>
+    </div>
+</form>
+
+<h1>Already exist:</h1>
+{% for option in options %}
+<p>{{ option }}</p>
+{% endfor %}
+
+<p><a href="{{ url_for('poll', poll_id=poll.id) }}">view this poll</a></p>
+{% endblock %}

@@ -1,10 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="container mb-5">Add a new post</h1>
+
+<form action="/posts/add" method="post" class="container">
+    <div class="row mb-3">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Title</label>
+        <div class="col-sm-10">
+            <input name="title" type="text" class="form-control mb-3" id="inputEmail3">
+        </div>
+
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Content</label>
+        <div class="col-sm-10">
+            <input name="content" type="text" class="form-control mb-3">
+        </div>
+
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Author</label>
+        <div class="col-sm-10">
+            <input name="author" type="text" class="form-control mb-3">
+        </div>
+
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Category</label>
+        <div class="form-floating">
+            <select name="category" class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                {% for category in categories %}
+                <option value="{{ category.id }}">{{ category }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Send</button>
+</form>
+
+{% endblock %}>

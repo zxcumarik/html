@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container w-75">
+    <div class="card text-white border-warning bg-dark mb-3" style="max-width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{ current_user }}</h5>
+        </div>
+    </div>
+    <h3 class="card border-success w-25">Your tours</h3>
+    <div class="card text-white border-warning bg-dark mb-3 w-25">
+        {% for tour in user_tours %}
+        <p>{{ tour }}</p>
+        {% endfor %}
+    </div>
+    {% if current_user.is_admin %}
+    <a href="{{url_for('new_tour')}}">Create a new tour</a>
+    {% endif %}
+</div>
+{% endblock %}

@@ -5,7 +5,6 @@ from .forms import RegistrationForm, LoginForm, CategoryForm, PostForm
 from . import app, db
 from .models import User, Category, Post
 
-
 @app.route('/')
 @app.route("/home")
 def home():
@@ -14,7 +13,8 @@ def home():
 
 @app.route("/profile")
 def profile():
-    return render_template('profile.html')
+    user_posts = db.session.scalars(current_user.user_posts.select())
+    return render_template('profile.html', user_posts=user_posts)
 
 
 @app.route('/register', methods=['GET', 'POST'])

@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Profile: {{ current_user.username }}</h1>
+
+<h3>You voted at these polls:</h3>
+{% for poll in user_polls %}
+<p><a href="{{ url_for('poll', poll_id=poll.id) }}">{{ poll }}</a></p>
+{% endfor %}
+{% endblock %}

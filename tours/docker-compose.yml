@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+  postgres_tours:
+    image: postgres:14
+    container_name: postgres_tours
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+
+  tours:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tours
+    depends_on:
+      - postgres_tours
+    volumes:
+      - static_volume:/app/static
+      - media_volume:/app/media
+    env_file:
+      - .env
+    ports:
+      - "5000:5000"
+
+
+volumes:
+  postgres_data:
+  static_volume:
+  media_volume:
